@@ -1,0 +1,125 @@
+<mvc:View
+	controllerName="sap.ui.core.tutorial.odatav4.controller.App"
+	displayBlock="true"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc">
+	<Shell>
+		<App busy="{appView>/busy}" class="sapUiSizeCompact">
+			<pages>
+				<Page title="{i18n>peoplePageTitle}">					
+					<content>
+						<Table
+							id="contactsTable"
+							growing="true"
+							growingThreshold="10"
+							growingScrollToLoad="true"
+							items="{
+								path: '/contacts',
+								parameters: {
+									$count: true,
+									$$updateGroupId : 'contactGroup'
+								}
+							}"						
+							mode="SingleSelectLeft"
+							selectionChange="onTableSelectionChange"
+							updateFinished="onTableUpdateFinished"
+							includeItemInSelection="true">
+							<headerToolbar>
+								<OverflowToolbar>
+									<content>
+										<ToolbarSpacer/>
+										<SearchField
+											id="searchField"
+											width="20%"
+											placeholder="{i18n>searchFieldPlaceholder}"
+											enabled="{= !${appView>/hasUIChanges}}"
+											search=".onSearch"/>
+										<Button
+											id="addContactButton"
+											icon="sap-icon://add"
+											tooltip="{i18n>createButtonText}"
+											press=".onCreate">
+											<layoutData>
+												<OverflowToolbarLayoutData priority="NeverOverflow"/>
+											</layoutData>
+										</Button>
+										<Button
+											id="deleteContactButton"
+											icon="sap-icon://delete"
+											tooltip="{i18n>deleteButtonText}"
+											press=".onDelete">
+											<layoutData>
+												<OverflowToolbarLayoutData priority="NeverOverflow"/>
+											</layoutData>
+										</Button>
+										<Button
+											id="refreshContactsButton"
+											icon="sap-icon://refresh"
+											enabled="{= !${appView>/hasUIChanges}}"
+											tooltip="{i18n>refreshButtonText}"
+											press=".onRefresh"/>
+										<Button
+											id="sortContactsButton"
+											icon="sap-icon://sort"
+											enabled="{= !${appView>/hasUIChanges}}"
+											tooltip="{i18n>sortButtonText}"
+											press=".onSort"/>
+									</content>
+								</OverflowToolbar>
+							</headerToolbar>
+							<columns>
+								<Column id="contactEmailColumn">
+									<Text text="{i18n>emailLabelText}"/>
+								</Column>
+								<Column id="contactNameColumn">
+									<Text text="{i18n>nameLabelText}"/>
+								</Column>
+								<Column id="contactPhoneColumn">
+									<Text text="{i18n>phoneLabelText}"/>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem>
+									<cells>
+										<Input
+											value="{Email}"
+											valueLiveUpdate="false"
+											editable="false"
+											liveChange=".onInputChange"/>
+									</cells>
+									<cells>
+										<Input
+											value="{Name}"
+											editable="false"
+											liveChange=".onInputChange"/>
+									</cells>
+									<cells>
+										<Input
+											value="{Phone}"
+											editable="false"
+											liveChange=".onInputChange"/>
+									</cells>									
+								</ColumnListItem>
+							</items>
+						</Table>
+					</content>
+					<footer>
+						<Toolbar visible="{appView>/hasUIChanges}">
+							<ToolbarSpacer/>
+							<Button
+								id="saveButton"
+								type="Emphasized"
+								text="{i18n>saveButtonText}"
+								enabled="{= ${message>/}.length === 0 &amp;&amp; ${appView>/contactnameEmpty} === false }"
+								press=".onSave"/>
+							<Button
+								id="doneButton"
+								text="{i18n>cancelButtonText}"
+								press=".onResetChanges"/>
+						</Toolbar>
+					</footer>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>
