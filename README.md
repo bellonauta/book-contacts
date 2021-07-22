@@ -1,6 +1,6 @@
 # Agenda de contatos
 
-É uma aplicação web que consome a API BookContact(https://github.com/bellonauta/BookContact).
+É uma aplicação web que consome a API BookContact(https://github.com/bellonauta/contact-book-api).
 Permite a inclusão, alteração e consulta a contatos da agenda.
 
 ---
@@ -12,10 +12,9 @@ Permite a inclusão, alteração e consulta a contatos da agenda.
 ## Instalação
 - Faça o clone do repositório para sua pasta para execução da aplicação.
 - Coloque a URI da API, no manifest.json, na propriedade /sap.app/dataSources/contacts/uri;
-- Coloque a URI de autenticação(token) da API, no manifest.json, na propriedade 
+- Finalmente, coloque a URL de autenticação(token) da API, no manifest.json, na propriedade 
 /sap.app/dataSources/contacts/autentication/url;
-- Finalmente, coloque o nome do usuário de autenticação(token) da API, no manifest.json, na propriedade 
-/sap.app/dataSources/contacts/autentication/username.
+
 
 ---
 ## ToDo
