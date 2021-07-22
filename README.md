@@ -1,6 +1,6 @@
 # Agenda de contatos
 
-É uma aplicação web que consome a API BookContact(https://github.com/bellonauta/contact-book-api).
+É uma aplicação web que consome a API contact-book(https://github.com/bellonauta/contact-book-api).
 Permite a inclusão, alteração e consulta a contatos da agenda.
 
 ---
